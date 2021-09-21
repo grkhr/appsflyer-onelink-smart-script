@@ -118,7 +118,7 @@ class OneLinkUrlGenerator {
     }
     
     setCustomParsedParameter(searchKey, customKey, customValue = null) {
-        setParsedParameter(afParamName, paramValue);
+        setParsedParameter(this.afParams, afParamName, paramValue);
     }
 }
 
