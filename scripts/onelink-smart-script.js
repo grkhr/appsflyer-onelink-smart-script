@@ -62,7 +62,7 @@ class OneLinkUrlGenerator {
             this.afParams[this.gclIdParam] = gclIdValue
             console.debug("This user comes from Google AdWords");
 
-            const kwValue = getParameterFromURL('keyword');
+            const kwValue = getParameterFromURL('utm_term');
             if (!!kwValue) {
                 this.afParams['af_keywords'] = kwValue;
                 console.debug("There is a keyword associated with the ad");
@@ -115,6 +115,10 @@ class OneLinkUrlGenerator {
 
     setCustomParameter(searchKey, customKey, customValue = null) {
         setGenericParameter(this.afParams, customKey, searchKey, customValue);
+    }
+    
+    setCustomParsedParameter(searchKey, customKey, customValue = null) {
+        setParsedParameter(afParamName, paramValue);
     }
 }
 
@@ -199,6 +203,10 @@ function setGenericParameter(afParams, oneLinkParam, searchKey, newParamValue = 
             console.debug(`${searchKey} not found and newParamValue is null. Skipping.`)
         }
     }
+}
+
+function setParsedParameter(afParams, afParamName, paramValue) {
+    afParams[afParamName] = paramValue;
 }
 
 (function(){
